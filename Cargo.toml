@@ -19,11 +19,8 @@ mysql = ["sqlx/mysql"]
 postgres = ["sqlx/postgres"]
 sqlite = ["sqlx/sqlite"]
 
-runtime-tokio-native-tls = ["sqlx/runtime-tokio-native-tls"]
-runtime-tokio-rustls = ["sqlx/runtime-tokio-rustls"]
-
 [package.metadata.docs.rs]
-features = ["all-databases", "runtime-tokio-rustls"]
+features = ["all-databases"]
 
 [dependencies]
 axum-core = "0.3"
@@ -38,9 +35,10 @@ tower-layer = "0.3"
 tower-service = "0.3"
 
 [dev-dependencies]
-axum-sqlx-tx = { path = ".", features = ["runtime-tokio-rustls", "sqlite"] }
+axum-sqlx-tx = { path = ".", features = ["sqlite"] }
 axum = "0.6.4"
 hyper = "0.14.17"
+sqlx = { features = ["runtime-tokio-rustls"] }
 tempfile = "3.3.0"
 tokio = { version = "1.17.0", features = ["full"] }
 tower = "0.4.12"
